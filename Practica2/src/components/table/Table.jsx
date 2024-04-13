@@ -1,15 +1,9 @@
 const Table = ({ netIncomes }) => {
   const tableMapped = netIncomes.map((company, index) => (
-    <tbody key={index}>
-      <tr>
-        <th>Nombre Compañia:</th>
-        <th>Ingresos Brutos:</th>
-      </tr>
-      <tr>
-        <td>{company.brand}</td>
-        <td>{company.income}</td>
-      </tr>
-    </tbody>
+    <tr key={index}>
+      <td>{company.brand}</td>
+      <td>{company.income}</td>
+    </tr>
   ));
   const totalIncome = netIncomes.reduce(
     (acc, income) => acc + income.income,
@@ -18,7 +12,13 @@ const Table = ({ netIncomes }) => {
   const average = totalIncome / netIncomes.length;
   return (
     <>
-      <table>{tableMapped}</table>
+      <table>
+        <tr>
+          <th>Nombre Compañia:</th>
+          <th>Ingresos Brutos:</th>
+        </tr>
+        {tableMapped}
+      </table>
       <p>Promedio de Ingresos Brutos: {average.toFixed(2)}</p>
     </>
   );
